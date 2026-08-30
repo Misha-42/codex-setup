@@ -1,9 +1,8 @@
 @echo off
 title Codex - Custom Model
-echo Starting Codex with custom model...
+echo Starting Custom Model...
 echo.
-echo Usage: codex.bat --model MODEL_NAME
-echo Example: codex.bat --model dashscope/qwen3.8-max
+echo Model: %MODEL%
 echo.
 echo Press any key to start Codex...
 pause > nul

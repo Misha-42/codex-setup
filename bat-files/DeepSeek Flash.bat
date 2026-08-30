@@ -1,9 +1,8 @@
 @echo off
 title Codex - DeepSeek Flash
-echo Starting DeepSeek Flash (DashScope)...
+echo Starting DeepSeek Flash (deepseek-v4-flash)...
 echo.
-echo Model: deepseek-v4-flash
-echo Provider: DashScope
+echo Model: dashscope/deepseek-v4-flash
 echo.
 echo Press any key to start Codex...
 pause > nul

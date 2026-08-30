@@ -1,4 +1,9 @@
 @echo off
+title Codex - Coding Max
 echo Starting Coding Max (qwen3.8-max)...
-echo Maximum quality for complex coding tasks!
+echo.
+echo Model: dashscope/qwen3.8-max
+echo.
+echo Press any key to start Codex...
+pause > nul
 "C:\Users\user\AppData\Local\Programs\OpenAI\Codex\bin\codex.exe" --model dashscope/qwen3.8-max

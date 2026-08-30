@@ -2,8 +2,7 @@
 title Codex - Claude Opus 5
 echo Starting Claude Opus 5 (KKToken)...
 echo.
-echo Model: claude-opus-5
-echo Provider: KKToken
+echo Model: kktoken/claude-opus-5
 echo.
 echo Press any key to start Codex...
 pause > nul

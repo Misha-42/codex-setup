@@ -1,9 +1,8 @@
 @echo off
 title Codex - DeepSeek Pro
-echo Starting DeepSeek Pro (DashScope)...
+echo Starting DeepSeek Pro (deepseek-v4-pro)...
 echo.
-echo Model: deepseek-v4-pro
-echo Provider: DashScope
+echo Model: dashscope/deepseek-v4-pro
 echo.
 echo Press any key to start Codex...
 pause > nul

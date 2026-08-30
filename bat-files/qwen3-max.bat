@@ -2,8 +2,7 @@
 title Codex - Qwen3 Max
 echo Starting Qwen3 Max (DashScope)...
 echo.
-echo Model: qwen3-max
-echo Provider: DashScope
+echo Model: dashscope/qwen3-max
 echo.
 echo Press any key to start Codex...
 pause > nul

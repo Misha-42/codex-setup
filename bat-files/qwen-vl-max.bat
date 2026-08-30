@@ -2,8 +2,7 @@
 title Codex - Qwen VL Max
 echo Starting Qwen VL Max (DashScope)...
 echo.
-echo Model: qwen-vl-max
-echo Provider: DashScope
+echo Model: dashscope/qwen-vl-max
 echo.
 echo Press any key to start Codex...
 pause > nul

@@ -3,7 +3,6 @@ title Codex - ZHIPU GLM-5
 echo Starting ZHIPU GLM-5 (DashScope)...
 echo.
 echo Model: ZHIPU/GLM-5
-echo Provider: DashScope
 echo.
 echo Press any key to start Codex...
 pause > nul

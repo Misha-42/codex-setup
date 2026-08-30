@@ -2,8 +2,7 @@
 title Codex - GPT-5.6 Sol
 echo Starting GPT-5.6 Sol (Tooken)...
 echo.
-echo Model: gpt-5.6-sol
-echo Provider: Tooken Club
+echo Model: tooken/gpt-5.6-sol
 echo.
 echo Press any key to start Codex...
 pause > nul
