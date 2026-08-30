@@ -14,13 +14,13 @@ powershell -ExecutionPolicy Bypass -c '$env:CODEX_NON_INTERACTIVE=1; irm https:/
 
 ```powershell
 # DashScope ключ (безлимитный)
-setx DASHSCOPE_API_KEY "YOUR_DASHSCOPE_API_KEY"
+setx DASHSCOPE_API_KEY "sk-4deb7c21bc32424290dfb2dc127f4054"
 
 # KKToken ключ (Claude модели)
-setx KKTOKEN_API_KEY "YOUR_KKTOKEN_API_KEY"
+setx KKTOKEN_API_KEY "sk-HPb20qLtj5eNmgutGMn0Y9yqRlbGQ8SwqAsYDOOLYejd3uzu"
 
 # Tooken Club ключ (Claude/GPT модели)
-setx TOOKEN_API_KEY "YOUR_TOOKEN_API_KEY"
+setx TOOKEN_API_KEY "tc_live_59a2a3bc4ed723b7b8c4b244f2c353bb288b5cef213d1d39"
 ```
 
 ### 3. Скопируй конфиги
