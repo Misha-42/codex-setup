@@ -19,16 +19,16 @@ powershell -ExecutionPolicy Bypass -c '$env:CODEX_NON_INTERACTIVE=1; irm https:/
 
 ```powershell
 # DashScope ключ (безлимитный, 246 моделей)
-[Environment]::SetEnvironmentVariable("DASHSCOPE_API_KEY", "sk-4deb7c21bc32424290dfb2dc127f4054", "User")
-$env:DASHSCOPE_API_KEY = "sk-4deb7c21bc32424290dfb2dc127f4054"
+[Environment]::SetEnvironmentVariable("DASHSCOPE_API_KEY", "YOUR_DASHSCOPE_API_KEY", "User")
+$env:DASHSCOPE_API_KEY = "YOUR_DASHSCOPE_API_KEY"
 
 # KKToken ключ (Claude модели)
-[Environment]::SetEnvironmentVariable("KKTOKEN_API_KEY", "sk-HPb20qLtj5eNmgutGMn0Y9yqRlbGQ8SwqAsYDOOLYejd3uzu", "User")
-$env:KKTOKEN_API_KEY = "sk-HPb20qLtj5eNmgutGMn0Y9yqRlbGQ8SwqAsYDOOLYejd3uzu"
+[Environment]::SetEnvironmentVariable("KKTOKEN_API_KEY", "YOUR_KKTOKEN_API_KEY", "User")
+$env:KKTOKEN_API_KEY = "YOUR_KKTOKEN_API_KEY"
 
 # Tooken Club ключ (Claude/GPT модели)
-[Environment]::SetEnvironmentVariable("TOOKEN_API_KEY", "tc_live_59a2a3bc4ed723b7b8c4b244f2c353bb288b5cef213d1d39", "User")
-$env:TOOKEN_API_KEY = "tc_live_59a2a3bc4ed723b7b8c4b244f2c353bb288b5cef213d1d39"
+[Environment]::SetEnvironmentVariable("TOOKEN_API_KEY", "YOUR_TOOKEN_API_KEY", "User")
+$env:TOOKEN_API_KEY = "YOUR_TOOKEN_API_KEY"
 ```
 
 **Проверь что переменные установлены:**
@@ -230,3 +230,4 @@ Write-Host "Ярлык Codex создан: $shortcutPath"
 1. Проверь статус: `~\codex-ds.ps1 -Status`
 2. Сбрось квоты: `~\codex-ds.ps1 -Reset`
 3. Используй другую модель
+
