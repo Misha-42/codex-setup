@@ -1,0 +1,221 @@
+﻿model_provider = "dashscope"
+model = "qwen3-coder-flash"
+model_reasoning_effort = "low"
+# Лимит контекста: не тащим историю и мусор, экономим квоту.
+# Дефолт был 200K; 64K хватает и на большие файлы в batch (32K их режет).
+# Больше экономии — меньше: model_context_window = 100000
+model_context_window = 100000
+
+[model_providers.dashscope]
+name = "DashScope Free"
+base_url = "https://dashscope.aliyuncs.com/compatible-mode/v1"
+env_key = "DASHSCOPE_API_KEY"
+wire_api = "responses"
+requires_openai_auth = false
+# Сессионный кэш DashScope: 10% цены на попадания (неявный — 20%), проверено на 3 моделях.
+# Безопасен: при одиночных запросах ведёт себя так же, как неявный кэш.
+http_headers = { x-dashscope-session-cache = "enable" }
+
+# Метаданные моделей: без них codex шлёт fallback и не знает лимиты (warning на старте).
+[model_providers.dashscope.models."deepseek-v4-flash"]
+name = "deepseek-v4-flash"
+context_window = 65536
+max_output_tokens = 8192
+reasoning = true
+tool_call = true
+
+[model_providers.dashscope.models."deepseek-v4-pro"]
+name = "deepseek-v4-pro"
+context_window = 65536
+max_output_tokens = 8192
+reasoning = true
+tool_call = true
+
+# Живые модели (deepseek-v4-flash и qwen3.7-flash сгорели, квота исчерпана 2026-08-21).
+[model_providers.dashscope.models."qwen3-coder-flash"]
+name = "qwen3-coder-flash"
+context_window = 65536
+max_output_tokens = 8192
+reasoning = true
+tool_call = true
+
+[model_providers.dashscope.models."qwen-turbo"]
+name = "qwen-turbo"
+context_window = 65536
+max_output_tokens = 8192
+tool_call = true
+
+[model_providers.dashscope.models."qwen-plus"]
+name = "qwen-plus"
+context_window = 65536
+max_output_tokens = 8192
+tool_call = true
+
+
+[model_providers.dashscope.models."qwen3.7-flash"]
+name = "qwen3.7-flash"
+context_window = 65536
+max_output_tokens = 8192
+tool_call = true
+
+[model_providers.dashscope.models."qwen3.6-flash"]
+name = "qwen3.6-flash"
+context_window = 65536
+max_output_tokens = 8192
+tool_call = true
+
+[model_providers.dashscope.models."qwen3.5-flash"]
+name = "qwen3.5-flash"
+context_window = 65536
+max_output_tokens = 8192
+tool_call = true
+
+[model_providers.dashscope.models."qwen-flash"]
+name = "qwen-flash"
+context_window = 65536
+max_output_tokens = 8192
+tool_call = true
+
+[model_providers.dashscope.models."qwen3.8-27b"]
+name = "qwen3.8-27b"
+context_window = 65536
+max_output_tokens = 8192
+tool_call = true
+
+[model_providers.dashscope.models."qwen3.6-27b"]
+name = "qwen3.6-27b"
+context_window = 65536
+max_output_tokens = 8192
+tool_call = true
+
+[model_providers.dashscope.models."qwen3.5-27b"]
+name = "qwen3.5-27b"
+context_window = 65536
+max_output_tokens = 8192
+tool_call = true
+
+[model_providers.dashscope.models."qwen3-8b"]
+name = "qwen3-8b"
+context_window = 65536
+max_output_tokens = 8192
+tool_call = true
+
+[model_providers.dashscope.models."qwen3-14b"]
+name = "qwen3-14b"
+context_window = 65536
+max_output_tokens = 8192
+tool_call = true
+
+[model_providers.dashscope.models."qwen3-32b"]
+name = "qwen3-32b"
+context_window = 65536
+max_output_tokens = 8192
+tool_call = true
+
+[model_providers.dashscope.models."qwen3.7-plus"]
+name = "qwen3.7-plus"
+context_window = 65536
+max_output_tokens = 8192
+tool_call = true
+
+[model_providers.dashscope.models."qwen3.6-plus"]
+name = "qwen3.6-plus"
+context_window = 65536
+max_output_tokens = 8192
+tool_call = true
+
+[model_providers.dashscope.models."qwen3.5-plus"]
+name = "qwen3.5-plus"
+context_window = 65536
+max_output_tokens = 8192
+tool_call = true
+
+[model_providers.dashscope.models."qwen3-30b-a3b"]
+name = "qwen3-30b-a3b"
+context_window = 65536
+max_output_tokens = 8192
+tool_call = true
+
+[model_providers.dashscope.models."qwen3.5-35b-a3b"]
+name = "qwen3.5-35b-a3b"
+context_window = 65536
+max_output_tokens = 8192
+tool_call = true
+
+[model_providers.dashscope.models."qwen3.6-35b-a3b"]
+name = "qwen3.6-35b-a3b"
+context_window = 65536
+max_output_tokens = 8192
+tool_call = true
+
+[model_providers.dashscope.models."qwen3-coder-plus"]
+name = "qwen3-coder-plus"
+context_window = 65536
+max_output_tokens = 8192
+tool_call = true
+
+[model_providers.dashscope.models."deepseek-v3.2"]
+name = "deepseek-v3.2"
+context_window = 65536
+max_output_tokens = 8192
+tool_call = true
+
+[model_providers.dashscope.models."qwen3.7-max"]
+name = "qwen3.7-max"
+context_window = 65536
+max_output_tokens = 8192
+tool_call = true
+
+[model_providers.dashscope.models."qwen3.5-122b-a10b"]
+name = "qwen3.5-122b-a10b"
+context_window = 65536
+max_output_tokens = 8192
+tool_call = true
+
+[model_providers.dashscope.models."qwen3-235b-a22b"]
+name = "qwen3-235b-a22b"
+context_window = 65536
+max_output_tokens = 8192
+tool_call = true
+
+[model_providers.dashscope.models."qwen3-coder-next"]
+name = "qwen3-coder-next"
+context_window = 65536
+max_output_tokens = 8192
+tool_call = true
+
+[model_providers.dashscope.models."deepseek-v4-pro-0813"]
+name = "deepseek-v4-pro-0813"
+context_window = 65536
+max_output_tokens = 8192
+tool_call = true
+
+[model_providers.dashscope.models."qwen3.8-max"]
+name = "qwen3.8-max"
+context_window = 65536
+max_output_tokens = 8192
+tool_call = true
+
+[model_providers.dashscope.models."ZHIPU/GLM-5.3"]
+name = "ZHIPU/GLM-5.3"
+context_window = 65536
+max_output_tokens = 8192
+tool_call = true
+
+[model_providers.dashscope.models."glm-5.2"]
+name = "glm-5.2"
+context_window = 65536
+max_output_tokens = 8192
+tool_call = true
+
+[model_providers.dashscope.models."kimi-k2.7-code"]
+name = "kimi-k2.7-code"
+context_window = 65536
+max_output_tokens = 8192
+tool_call = true
+
+[model_providers.dashscope.models."qwen3.5-397b-a17b"]
+name = "qwen3.5-397b-a17b"
+context_window = 65536
+max_output_tokens = 8192
+tool_call = true

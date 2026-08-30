@@ -1,0 +1,3 @@
+@echo off
+echo Starting deepseek-r1 (DashScope)...
+"C:\Users\user\AppData\Local\Programs\OpenAI\Codex\bin\codex.exe" --model dashscope/deepseek-r1

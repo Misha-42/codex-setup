@@ -1,0 +1,3 @@
+@echo off
+echo Starting GLM 5.3 (DashScope)...
+"C:\Users\user\AppData\Local\Programs\OpenAI\Codex\bin\codex.exe" --model dashscope/ZHIPU/GLM-5.3

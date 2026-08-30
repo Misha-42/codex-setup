@@ -1,0 +1,3 @@
+@echo off
+echo Starting kimi-k2.7-code (DashScope)...
+"C:\Users\user\AppData\Local\Programs\OpenAI\Codex\bin\codex.exe" --model dashscope/kimi-k2.7-code

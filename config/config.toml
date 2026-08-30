@@ -1,0 +1,360 @@
+﻿# ===== ДЕФОЛТ: DashScope (бесплатный триал). Для DeepSeek замените на: model_provider = "dashscope" =====
+model_provider = "dashscope"
+model = "qwen3-coder-flash"
+review_model = "qwen3.7-plus"
+model_reasoning_effort = "low"
+
+# Лимит контекста: не тащим историю и мусор, экономим квоту (дефолт был 200K).
+# Меньше — экономнее: 32768 (но режет большие файлы в batch).
+model_context_window = 100000
+disable_response_storage = true
+network_access = "enabled"
+windows_wsl_setup_acknowledged = true
+approval_policy = "never"
+sandbox_mode = "danger-full-access"
+web_search = "cached"
+notify = [
+    'C:\Users\user\AppData\Local\OpenAI\Codex\runtimes\cua_node\23828fd353da361d\bin\node_modules\@oai\sky\bin\windows\codex-computer-use.exe',
+    "turn-ended",
+]
+
+[model_providers.deepseek]
+name = "DeepSeek (via DashScope)"
+base_url = "https://dashscope.aliyuncs.com/compatible-mode/v1"
+env_key = "DASHSCOPE_API_KEY"
+wire_api = "responses"
+requires_openai_auth = false
+
+[model_providers.dashscope]
+name = "DashScope"
+base_url = "https://dashscope.aliyuncs.com/compatible-mode/v1"
+env_key = "DASHSCOPE_API_KEY"
+wire_api = "responses"
+requires_openai_auth = false
+
+# Сессионный кэш DashScope: 10% цены на попадания (неявный — 20%), проверено на 3 моделях.
+http_headers = { x-dashscope-session-cache = "enable" }
+
+# Метаданные моделей: без них codex шлёт fallback и не знает лимиты (warning на старте).
+[model_providers.dashscope.models."deepseek-v4-flash"]
+name = "deepseek-v4-flash"
+context_window = 65536
+max_output_tokens = 8192
+reasoning = true
+tool_call = true
+
+[model_providers.dashscope.models."deepseek-v4-pro"]
+name = "deepseek-v4-pro"
+context_window = 65536
+max_output_tokens = 8192
+reasoning = true
+tool_call = true
+
+# Живые модели (deepseek-v4-flash и qwen3.7-flash сгорели, квота исчерпана 2026-08-21).
+[model_providers.dashscope.models."qwen3-coder-flash"]
+name = "qwen3-coder-flash"
+context_window = 65536
+max_output_tokens = 8192
+reasoning = true
+tool_call = true
+
+[model_providers.dashscope.models."qwen-turbo"]
+name = "qwen-turbo"
+context_window = 65536
+max_output_tokens = 8192
+tool_call = true
+
+[model_providers.dashscope.models."qwen-plus"]
+name = "qwen-plus"
+context_window = 65536
+max_output_tokens = 8192
+tool_call = true
+
+[model_providers.dashscope.models."qwen3.8-max"]
+name = "qwen3.8-max"
+context_window = 131072
+max_output_tokens = 8192
+reasoning = true
+tool_call = true
+
+[model_providers.dashscope.models."qwen3.8-flash"]
+name = "qwen3.8-flash"
+context_window = 131072
+max_output_tokens = 8192
+reasoning = true
+tool_call = true
+
+[model_providers.dashscope.models."qwen3.7-max"]
+name = "qwen3.7-max"
+context_window = 131072
+max_output_tokens = 8192
+reasoning = true
+tool_call = true
+
+[model_providers.dashscope.models."qwen3.7-plus"]
+name = "qwen3.7-plus"
+context_window = 131072
+max_output_tokens = 8192
+reasoning = true
+tool_call = true
+
+[model_providers.dashscope.models."qwen3.6-flash"]
+name = "qwen3.6-flash"
+context_window = 131072
+max_output_tokens = 8192
+reasoning = true
+tool_call = true
+
+[model_providers.dashscope.models."ZHIPU/GLM-5.3"]
+name = "ZHIPU/GLM-5.3"
+context_window = 131072
+max_output_tokens = 8192
+reasoning = true
+tool_call = true
+
+[model_providers.dashscope.models."ZHIPU/GLM-5.2"]
+name = "ZHIPU/GLM-5.2"
+context_window = 131072
+max_output_tokens = 8192
+reasoning = true
+tool_call = true
+
+[model_providers.dashscope.models."kimi-k3"]
+name = "kimi-k3"
+context_window = 131072
+max_output_tokens = 8192
+reasoning = true
+tool_call = true
+
+[model_providers.kktoken]
+name = "KKToken"
+base_url = "https://kktoken.cc/v1"
+env_key = "KKTOKEN_API_KEY"
+wire_api = "responses"
+requires_openai_auth = true
+
+[model_providers.kktoken.models."claude-opus-5"]
+name = "claude-opus-5"
+context_window = 200000
+max_output_tokens = 8192
+reasoning = true
+tool_call = true
+
+[model_providers.kktoken.models."claude-opus-4-8"]
+name = "claude-opus-4-8"
+context_window = 200000
+max_output_tokens = 8192
+reasoning = true
+tool_call = true
+
+[model_providers.tooken]
+name = "Tooken Club"
+base_url = "https://tooken.club/v1"
+env_key = "TOOKEN_API_KEY"
+wire_api = "responses"
+requires_openai_auth = true
+
+[model_providers.tooken.models."claude-opus-5"]
+name = "claude-opus-5"
+context_window = 200000
+max_output_tokens = 8192
+reasoning = true
+tool_call = true
+
+[model_providers.tooken.models."claude-sonnet-5"]
+name = "claude-sonnet-5"
+context_window = 200000
+max_output_tokens = 8192
+reasoning = true
+tool_call = true
+
+[model_providers.tooken.models."gpt-5.6-sol"]
+name = "gpt-5.6-sol"
+context_window = 200000
+max_output_tokens = 8192
+reasoning = true
+tool_call = true
+
+[model_providers.tooken.models."gpt-5.6-luna"]
+name = "gpt-5.6-luna"
+context_window = 200000
+max_output_tokens = 8192
+reasoning = true
+tool_call = true
+
+[model_providers.tooken.models."gpt-5.6-terra"]
+name = "gpt-5.6-terra"
+context_window = 200000
+max_output_tokens = 8192
+reasoning = true
+tool_call = true
+
+[features]
+goals = true
+js_repl = false
+memories = true
+
+[projects.'c:\users\user']
+trust_level = "trusted"
+
+[projects.'c:\users\user\soda-ml-carbonation-control']
+trust_level = "trusted"
+
+[projects.'c:\users\user\desktop\art_elect']
+trust_level = "trusted"
+
+[projects.'c:\users\user\documents\codex\2026-08-14\new-chat']
+trust_level = "trusted"
+
+[projects.'c:\users\user\desktop']
+trust_level = "trusted"
+
+[projects.'c:\users\user\codex-stack']
+trust_level = "trusted"
+
+[projects.'c:\users\user\desktop\codex']
+trust_level = "trusted"
+
+[projects.'c:\windows\system32']
+trust_level = "trusted"
+
+[windows]
+sandbox = "unelevated"
+
+[marketplaces.openai-bundled]
+last_updated = "2026-08-29T18:42:32Z"
+source_type = "local"
+source = '\\?\C:\Users\user\.codex\.tmp\bundled-marketplaces\openai-bundled'
+
+[marketplaces.openai-primary-runtime]
+last_updated = "2026-08-29T18:44:22Z"
+source_type = "local"
+source = '\\?\C:\Users\user\.cache\codex-runtimes\codex-primary-runtime\plugins\openai-primary-runtime'
+
+[plugins."browser@openai-bundled"]
+enabled = true
+
+[plugins."visualize@openai-bundled"]
+enabled = true
+
+[plugins."documents@openai-primary-runtime"]
+enabled = true
+
+[plugins."pdf@openai-primary-runtime"]
+enabled = true
+
+[plugins."spreadsheets@openai-primary-runtime"]
+enabled = true
+
+[plugins."presentations@openai-primary-runtime"]
+enabled = true
+
+[plugins."template-creator@openai-primary-runtime"]
+enabled = true
+
+[mcp_servers.node_repl]
+args = []
+command = 'C:\Users\user\AppData\Local\OpenAI\Codex\runtimes\cua_node\23828fd353da361d\bin\node_repl.exe'
+startup_timeout_sec = 120
+
+[mcp_servers.node_repl.env]
+NODE_REPL_NATIVE_PIPE_CONNECT_TIMEOUT_MS = "1000"
+NODE_REPL_NODE_MODULE_DIRS = 'C:\Users\user\AppData\Local\OpenAI\Codex\runtimes\cua_node\23828fd353da361d\bin\node_modules'
+NODE_REPL_NODE_PATH = 'C:\Users\user\AppData\Local\OpenAI\Codex\runtimes\cua_node\23828fd353da361d\bin\node.exe'
+NODE_REPL_TRUSTED_CODE_PATHS = 'C:\Users\user\.codex;C:\Users\user\AppData\Local\OpenAI\Codex\runtimes\cua_node\23828fd353da361d\bin\node_modules'
+CODEX_HOME = 'C:\Users\user\.codex'
+NODE_REPL_TRUSTED_BROWSER_CLIENT_SHA256S = "8676faca28eddb6424d4b54116fe8305e2da6a0ca4e5271e8758fc3c55c3b8fc"
+BROWSER_USE_AVAILABLE_BACKENDS = "chrome,iab"
+NODE_REPL_INSTRUCTIONS_USE_CASE_BROWSER = "Control the in-app browser in conjunction with the Browser Plugin."
+NODE_REPL_INSTRUCTIONS_USE_CASE_CHROME = "Control the Chrome browser in conjunction with the Chrome Plugin. Prefer this method of controlling Chrome over alternatives (such as Computer Use) unless the user explicitly mentions an alternative."
+BROWSER_USE_CODEX_APP_BUILD_FLAVOR = "prod"
+BROWSER_USE_CODEX_APP_VERSION = "26.803.81509"
+SKY_CUA_NATIVE_PIPE = "1"
+SKY_CUA_NATIVE_PIPE_DIRECTORY = '\\.\pipe\codex-computer-use-a185ccae-d127-4add-8a2f-91c4ab5ee19e'
+CODEX_CLI_PATH = 'C:\Users\user\AppData\Local\OpenAI\Codex\bin\8e8bf206e63ac436\codex.exe'
+
+[shell_environment_policy]
+inherit = "core"
+
+[shell_environment_policy.set]
+BROWSER_USE_AVAILABLE_BACKENDS = "chrome,iab"
+NODE_REPL_TRUSTED_BROWSER_CLIENT_SHA256S = "8676faca28eddb6424d4b54116fe8305e2da6a0ca4e5271e8758fc3c55c3b8fc"
+NODE_REPL_TRUSTED_CODE_PATHS = 'C:\Users\user\.codex;C:\Users\user\AppData\Local\OpenAI\Codex\runtimes\cua_node\23828fd353da361d\bin\node_modules'
+ANTHROPIC_AUTH_TOKEN = "$env:ANTHROPIC_AUTH_TOKEN"
+ANTHROPIC_BASE_URL = "http://localhost:1880"
+ANTHROPIC_DEFAULT_HAIKU_model = "qwen3.7-plus"
+ANTHROPIC_DEFAULT_OPUS_model = "qwen3.7-plus"
+ANTHROPIC_DEFAULT_SONNET_model = "qwen3.7-plus"
+ANTHROPIC_model = "qwen3.7-plus"
+API_TIMEOUT_MS = "600000"
+CLAUDE_CODE_EFFORT_LEVEL = "max"
+CLAUDE_CODE_MAX_RETRIES = "15"
+CLAUDE_CODE_NO_FLICKER = "1"
+CLAUDE_CODE_RETRY_WATCHDOG = "1"
+CLAUDE_CODE_SUBAGENT_model = "qwen3.7-plus"
+SNAPVIEW_AUTO_TRIGGER = "1"
+
+[desktop]
+# false: desktop-приложение при запуске переписало config.toml и снесло провайдер (2026-08-21)
+external-agent-import-sync-enabled = false
+appearanceTheme = "dark"
+show-context-window-usage = false
+usePointerCursors = true
+enabled-reasoning-efforts = ["low", "medium", "high", "xhigh", "ultra", "max"]
+followUpQueueMode = "queue"
+
+[tui.model_availability_nux]
+"gpt-5.5" = 2
+"gpt-5.6-sol" = 4
+
+[memories]
+generate_memories = true
+use_memories = true
+
+[hooks.state]
+
+[hooks.state.'C:\Users\user\.codex\hooks.json:pre_tool_use:0:0']
+trusted_hash = "sha256:621115a34d67d77964648ca28254cce468a419c2ecca8d72ad8a2ec3691bd9f4"
+
+[hooks.state.'C:\Users\user\.codex\hooks.json:pre_tool_use:1:0']
+trusted_hash = "sha256:83dc66eb433f9c717adb97a8b493c252e337977714f8120f771f99bffe078a7c"
+
+[hooks.state.'C:\Users\user\.codex\hooks.json:permission_request:0:0']
+trusted_hash = "sha256:c30db9cbf8364fb40d05ccfc226463e04d280278bf0b2eca54e415056635b406"
+
+[hooks.state.'C:\Users\user\.codex\hooks.json:permission_request:1:0']
+trusted_hash = "sha256:4943e4cb232f1892d57adaa8261cfad68822ffe31de7dadaec2c5e0e40566fcb"
+
+[hooks.state.'C:\Users\user\.codex\hooks.json:post_tool_use:0:0']
+trusted_hash = "sha256:9202cc4ba2eb8faed6cb7216b3bd1408218f1ba3b297326799d3e4d05e34a48d"
+
+[hooks.state.'C:\Users\user\.codex\hooks.json:pre_compact:0:0']
+trusted_hash = "sha256:f2f65e56819477e38fbc22d3994ee226a2e50fa74134535c210f264b00c92083"
+
+[hooks.state.'C:\Users\user\.codex\hooks.json:pre_compact:1:0']
+trusted_hash = "sha256:b202e8633a984cb73902ed393295c9100b167468ad2184f8a3ab27d895aa1f2b"
+
+[hooks.state.'C:\Users\user\.codex\hooks.json:session_start:0:0']
+trusted_hash = "sha256:4f1c8eb0c30a7de52fe75024159efbebb420d6a46999817a47c74d9ea4dc4f8b"
+
+[hooks.state.'C:\Users\user\.codex\hooks.json:session_start:1:0']
+trusted_hash = "sha256:4425d7c7ed7d18bffe2b8595bcb067f188d6f3e0e232286ad616b83370727e73"
+
+[hooks.state.'C:\Users\user\.codex\hooks.json:user_prompt_submit:0:0']
+trusted_hash = "sha256:f50ca0524698c5ff27a7ff0dc1839d34261994dd6c1be08a3f221a8562700d97"
+
+[hooks.state.'C:\Users\user\.codex\hooks.json:subagent_stop:0:0']
+trusted_hash = "sha256:33de78f7b52e6072adcdaf6104a1219034c7cacf4e8e375807dacb323747c14e"
+
+[hooks.state.'C:\Users\user\.codex\hooks.json:stop:0:0']
+trusted_hash = "sha256:5914bf7fa4c15fab112dd5270c0ff4ed8c44aa760704ff6f55d060bacada7e54"
+
+[hooks.state.'C:\Users\user\.codex\hooks.json:stop:1:0']
+trusted_hash = "sha256:fdfb267494bc61b75bb0b06f9eb4fe52b71af572acd43934a9464c3d86457ec2"
+
+[hooks.state.'C:\Users\user\.codex\hooks.json:stop:2:0']
+trusted_hash = "sha256:3c7423fc9277c01704d49f924b50d7da59626b03eb08989e3ceafcd281e3292a"
+
+[hooks.state.'C:\Users\user\.codex\hooks.json:session_end:0:0']
+trusted_hash = "sha256:9c8fce8dfab60759e87abd8dbe102256b0fdf5bb1004f9c7ab4d20b421cc8963"
+

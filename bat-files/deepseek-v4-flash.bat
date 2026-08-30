@@ -1,0 +1,3 @@
+@echo off
+echo Starting deepseek-v4-flash (DashScope)...
+"C:\Users\user\AppData\Local\Programs\OpenAI\Codex\bin\codex.exe" --model dashscope/deepseek-v4-flash

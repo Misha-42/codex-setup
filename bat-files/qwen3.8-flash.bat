@@ -1,0 +1,3 @@
+@echo off
+echo Starting qwen3.8-flash (DashScope)...
+"C:\Users\user\AppData\Local\Programs\OpenAI\Codex\bin\codex.exe" --model dashscope/qwen3.8-flash

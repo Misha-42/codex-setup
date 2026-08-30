@@ -1,0 +1,3 @@
+@echo off
+echo Starting Qwen 3.8 27B (DashScope)...
+"C:\Users\user\AppData\Local\Programs\OpenAI\Codex\bin\codex.exe" --model dashscope/qwen3.8-27b

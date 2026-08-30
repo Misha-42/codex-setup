@@ -1,0 +1,36 @@
+# Logs
+*.log
+
+# Temp files
+*.tmp
+*.temp
+
+# Backups
+*.bak
+*.bak-*
+
+# Quota files (содержат учетные данные)
+*-quota.json
+*-quota.lock
+
+# State files
+*.state
+*.json
+
+# Lock files
+*.lock
+
+# Node modules
+node_modules/
+
+# OS files
+Thumbs.db
+Desktop.ini
+
+# IDE files
+.vscode/
+.idea/
+
+# Secrets
+.env
+.env.local
