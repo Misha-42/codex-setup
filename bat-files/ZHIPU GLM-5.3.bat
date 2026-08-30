@@ -7,4 +7,4 @@ echo Provider: DashScope
 echo.
 echo Press any key to start Codex...
 pause > nul
-"C:\Users\user\AppData\Local\Programs\OpenAI\Codex\bin\codex.exe" --model dashscope/ZHIPU/GLM-5.3
+"C:\Users\user\AppData\Local\Programs\OpenAI\Codex\bin\codex.exe" --model ZHIPU/GLM-5.3
