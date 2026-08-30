@@ -1,12 +1,10 @@
 @echo off
-title Codex - gpt-5.6-terra
-echo Starting gpt-5.6-terra (Tooken Club)...
+title Codex - GPT-5.6 Terra
+echo Starting GPT-5.6 Terra (Tooken)...
 echo.
 echo Model: gpt-5.6-terra
 echo Provider: Tooken Club
 echo.
 echo Press any key to start Codex...
 pause > nul
-start cmd /k "C:\Users\user\AppData\Local\Programs\OpenAI\Codex\bin\codex.exe" --model tooken/gpt-5.6-terra"
-
-
+"C:\Users\user\AppData\Local\Programs\OpenAI\Codex\bin\codex.exe" --model tooken/gpt-5.6-terra

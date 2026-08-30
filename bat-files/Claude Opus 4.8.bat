@@ -7,6 +7,4 @@ echo Provider: KKToken
 echo.
 echo Press any key to start Codex...
 pause > nul
-start cmd /k "C:\Users\user\AppData\Local\Programs\OpenAI\Codex\bin\codex.exe" --model kktoken/claude-opus-4-8"
-
-
+"C:\Users\user\AppData\Local\Programs\OpenAI\Codex\bin\codex.exe" --model kktoken/claude-opus-4-8

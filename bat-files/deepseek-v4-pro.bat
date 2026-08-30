@@ -1,12 +1,10 @@
 @echo off
-title Codex - deepseek-v4-pro
-echo Starting Codex with deepseek-v4-pro...
+title Codex - DeepSeek V4 Pro
+echo Starting DeepSeek V4 Pro (DashScope)...
 echo.
 echo Model: deepseek-v4-pro
 echo Provider: DashScope
 echo.
 echo Press any key to start Codex...
 pause > nul
-start cmd /k "C:\Users\user\AppData\Local\Programs\OpenAI\Codex\bin\codex.exe" --model dashscope/deepseek-v4-pro"
-
-
+"C:\Users\user\AppData\Local\Programs\OpenAI\Codex\bin\codex.exe" --model dashscope/deepseek-v4-pro
