@@ -1,0 +1,1 @@
+CreateObject("WScript.Shell").Run "wt -w 0 nt -d ""C:\Users\user"" --title ""Codex - DeepSeek Pro (Auto Proxy)"" ""C:\Program Files\PowerShell\7\pwsh.exe"" -NoExit -Command ""codex --model deepseek-v4-pro""", 0, False

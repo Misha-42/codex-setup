@@ -1,0 +1,1 @@
+CreateObject("WScript.Shell").Run "wt -w 0 nt -d ""C:\Users\user"" --title ""Codex - Qwen 3.8 Flash"" ""C:\Program Files\PowerShell\7\pwsh.exe"" -NoExit -Command ""codex --model qwen3.8-flash""", 0, False

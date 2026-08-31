@@ -1,0 +1,1 @@
+CreateObject("WScript.Shell").Run "wt -w 0 nt -d ""C:\Users\user"" --title ""Codex - Claude Sonnet"" ""C:\Program Files\PowerShell\7\pwsh.exe"" -NoExit -Command ""codex --model claude-sonnet-5""", 0, False
