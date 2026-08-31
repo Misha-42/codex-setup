@@ -1,0 +1,25 @@
+{
+  "effortLevel": "medium",
+  "env": {
+    "ANTHROPIC_AUTH_TOKEN": "sk-4deb7c21bc32424290dfb2dc127f4054",
+    "ANTHROPIC_BASE_URL": "https://dashscope.aliyuncs.com/apps/anthropic",
+    "ANTHROPIC_DEFAULT_HAIKU_MODEL": "qwen3-coder-flash",
+    "ANTHROPIC_DEFAULT_OPUS_MODEL": "deepseek-v4-pro",
+    "ANTHROPIC_DEFAULT_SONNET_MODEL": "qwen3-coder-480b-a35b-instruct",
+    "ANTHROPIC_MODEL": "qwen3-coder-480b-a35b-instruct",
+    "API_TIMEOUT_MS": "600000",
+    "CLAUDE_CODE_EFFORT_LEVEL": "medium",
+    "CLAUDE_CODE_MAX_CONTEXT_TOKENS": "200000",
+    "CLAUDE_CODE_MAX_RETRIES": "15",
+    "CLAUDE_CODE_NO_FLICKER": "1",
+    "CLAUDE_CODE_RETRY_WATCHDOG": "1",
+    "CLAUDE_CODE_SUBAGENT_MODEL": "qwen3-coder-flash"
+  },
+  "language": "русский",
+  "model": "sonnet",
+  "permissions": {
+    "defaultMode": "bypassPermissions"
+  },
+  "skipDangerousModePermissionPrompt": true,
+  "theme": "dark"
+}

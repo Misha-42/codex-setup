@@ -35,3 +35,6 @@ Desktop.ini
 .env
 .env.local
 .env.*
+
+# Claude portable config (private repo, by request)
+!setup/settings.json
