@@ -29,5 +29,24 @@ $j | Add-Member -NotePropertyName hasCompletedOnboarding -NotePropertyValue $tru
 $j | ConvertTo-Json -Depth 100 | Set-Content $claudeJson -Encoding UTF8
 Write-Output "hasCompletedOnboarding=true прописан в .claude.json"
 
+# Субагенты: Claude Code и opencode
+$repoAgents = Join-Path $PSScriptRoot "..\agents"
+$ccAgentsSrc = Join-Path $repoAgents "claude-code"
+$ocAgentsSrc = Join-Path $repoAgents "opencode"
+
+if (Test-Path $ccAgentsSrc) {
+  $ccAgentsDst = Join-Path $claudeDir "agents"
+  New-Item -ItemType Directory -Path $ccAgentsDst -Force | Out-Null
+  Copy-Item (Join-Path $ccAgentsSrc "*.md") $ccAgentsDst -Force
+  Write-Output "Субагенты Claude Code установлены в $ccAgentsDst"
+}
+
+if (Test-Path $ocAgentsSrc) {
+  $ocAgentsDst = Join-Path $env:USERPROFILE ".config\opencode\agent"
+  New-Item -ItemType Directory -Path $ocAgentsDst -Force | Out-Null
+  Copy-Item (Join-Path $ocAgentsSrc "*.md") $ocAgentsDst -Force
+  Write-Output "Субагенты opencode установлены в $ocAgentsDst"
+}
+
 Write-Output ""
 Write-Output "Готово. Открой НОВЫЙ терминал и запусти: claude"
