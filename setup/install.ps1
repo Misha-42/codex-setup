@@ -48,5 +48,13 @@ if (Test-Path $ocAgentsSrc) {
   Write-Output "Субагенты opencode установлены в $ocAgentsDst"
 }
 
+$cdxAgentsSrc = Join-Path $repoAgents "codex"
+if (Test-Path $cdxAgentsSrc) {
+  $cdxAgentsDst = Join-Path $env:USERPROFILE ".codex\agents"
+  New-Item -ItemType Directory -Path $cdxAgentsDst -Force | Out-Null
+  Copy-Item (Join-Path $cdxAgentsSrc "*.md") $cdxAgentsDst -Force
+  Write-Output "Агенты Codex установлены в $cdxAgentsDst"
+}
+
 Write-Output ""
 Write-Output "Готово. Открой НОВЫЙ терминал и запусти: claude"
