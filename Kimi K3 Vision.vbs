@@ -1,0 +1,1 @@
+CreateObject("WScript.Shell").Run "wt -w 0 nt -d ""C:\Users\user"" --title ""Claude - Kimi K3 Vision"" ""C:\Program Files\PowerShell\7\pwsh.exe"" -NoExit -Command ""claude --model kimi-k3""", 0, False

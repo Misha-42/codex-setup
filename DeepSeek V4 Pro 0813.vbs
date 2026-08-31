@@ -1,0 +1,1 @@
+CreateObject("WScript.Shell").Run "wt -w 0 nt -d ""C:\Users\user"" --title ""Claude - DeepSeek V4 Pro 0813"" ""C:\Program Files\PowerShell\7\pwsh.exe"" -NoExit -Command ""claude --model deepseek-v4-pro-0813""", 0, False

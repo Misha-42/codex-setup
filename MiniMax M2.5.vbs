@@ -1,0 +1,1 @@
+CreateObject("WScript.Shell").Run "wt -w 0 nt -d ""C:\Users\user"" --title ""Claude - MiniMax M2.5"" ""C:\Program Files\PowerShell\7\pwsh.exe"" -NoExit -Command ""claude --model MiniMax-M2.5""", 0, False

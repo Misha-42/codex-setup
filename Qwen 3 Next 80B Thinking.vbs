@@ -1,0 +1,1 @@
+CreateObject("WScript.Shell").Run "wt -w 0 nt -d ""C:\Users\user"" --title ""Claude - Qwen 3 Next 80B Thinking"" ""C:\Program Files\PowerShell\7\pwsh.exe"" -NoExit -Command ""claude --model qwen3-next-80b-a3b-thinking""", 0, False
