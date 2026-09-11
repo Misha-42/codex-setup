@@ -1,0 +1,1 @@
+CreateObject("WScript.Shell").Run "wt -w 0 nt -d ""C:\Users\user"" --title ""Claude - DeepSeek V4.1 Flash (OpenCode Go)"" ""C:\Program Files\PowerShell\7\pwsh.exe"" -NoExit -ExecutionPolicy Bypass -File ""C:\Users\user\.claude-go\launch-go.ps1""", 0, False
