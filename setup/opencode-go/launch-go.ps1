@@ -39,4 +39,7 @@ $env:CLAUDE_CODE_EFFORT_LEVEL = 'low'
 
 # --setting-sources user: не даём project-настройкам из <cwd>/.claude/settings.json
 # (например C:\Users\user\.claude\settings.json = DashScope) перебить профиль Go.
-claude --model deepseek-v4.1-flash --effort low --setting-sources user @args
+# --permission-mode: задаём явно, иначе сессия стартует в режиме auto и классификатор
+# auto-режима режет рутинные действия (подтверждено 2026-09-12). Флаг надёжнее ключа
+# permissions.defaultMode в settings.json, который не всегда успевает примениться.
+claude --model deepseek-v4.1-flash --effort low --setting-sources user --permission-mode bypassPermissions @args
