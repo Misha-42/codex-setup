@@ -8,4 +8,6 @@ echo.
 echo Press any key to start Codex...
 pause > nul
 
-"C:\Program Files\PowerShell\7\pwsh.exe" -NoExit -Command "codex --model gpt-5.6-luna"
+pwsh -NoExit -Command "codex -c model_provider=tooken --model gpt-5.6-luna"
+
+

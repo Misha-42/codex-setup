@@ -6,4 +6,5 @@ echo Model: dashscope/qwen-image-edit-max
 echo.
 echo Press any key to start Codex...
 pause > nul
-"C:\Users\user\AppData\Local\Programs\OpenAI\Codex\bin\codex.exe" --model dashscope/qwen-image-edit-max
+codex -c model_provider=dashscope --model qwen-image-edit-max
+

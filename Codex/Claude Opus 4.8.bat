@@ -8,4 +8,6 @@ echo.
 echo Press any key to start Codex...
 pause > nul
 
-"C:\Program Files\PowerShell\7\pwsh.exe" -NoExit -Command "codex --model claude-opus-4-8"
+pwsh -NoExit -Command "codex -c model_provider=kktoken --model claude-opus-4-8"
+
+

@@ -8,4 +8,5 @@ echo.
 echo Press any key to start Codex...
 pause > nul
 
-"C:\Program Files\PowerShell\7\pwsh.exe" -NoExit -Command "codex --model qwen-vl-max"
+pwsh -NoExit -Command "codex --model qwen-vl-max"
+

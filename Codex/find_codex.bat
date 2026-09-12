@@ -13,7 +13,7 @@ for /d %%i in ("C:\Program Files\WindowsApps\OpenAI.Codex*") do (
 )
 
 REM Check old path
-set "CODEX_PATH=C:\Users\user\AppData\Local\Programs\OpenAI\Codex\bin\codex.exe"
+set "CODEX_PATH=%USERPROFILE%\AppData\Local\Programs\OpenAI\Codex\bin\codex.exe"
 if exist "%CODEX_PATH%" (
     set "CODEX=%CODEX_PATH%"
     exit /b 0
@@ -28,3 +28,4 @@ if not errorlevel 1 (
 
 REM Not found
 exit /b 1
+

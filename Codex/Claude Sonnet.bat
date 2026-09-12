@@ -8,4 +8,6 @@ echo.
 echo Press any key to start Codex...
 pause > nul
 
-"C:\Program Files\PowerShell\7\pwsh.exe" -NoExit -Command "codex --model claude-sonnet-5"
+pwsh -NoExit -Command "codex -c model_provider=tooken --model claude-sonnet-5"
+
+

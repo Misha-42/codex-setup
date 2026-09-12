@@ -8,4 +8,5 @@ echo.
 echo Press any key to start Codex...
 pause > nul
 
-"C:\Program Files\PowerShell\7\pwsh.exe" -NoExit -Command "codex --model kimi-k3"
+pwsh -NoExit -Command "codex --model kimi-k3"
+

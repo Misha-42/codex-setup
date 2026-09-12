@@ -6,4 +6,5 @@ echo Model: dashscope/kimi-k2.7-code
 echo.
 echo Press any key to start Codex...
 pause > nul
-"C:\Users\user\AppData\Local\Programs\OpenAI\Codex\bin\codex.exe" --model dashscope/kimi-k2.7-code
+codex -c model_provider=dashscope --model kimi-k2.7-code
+

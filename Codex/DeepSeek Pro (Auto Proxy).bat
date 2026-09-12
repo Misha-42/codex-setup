@@ -9,7 +9,7 @@ echo Checking proxy status...
 netstat -ano | findstr ":1888" >nul 2>&1
 if errorlevel 1 (
     echo Proxy is NOT running. Starting proxy...
-    start "DashScope Proxy" node "C:\Users\user\dashscope-cache-proxy.cjs"
+    start "DashScope Proxy" node "%USERPROFILE%\dashscope-cache-proxy.cjs"
     timeout /t 3 /nobreak >nul
     echo Proxy started.
 ) else (
@@ -20,4 +20,6 @@ echo.
 echo Press any key to start Codex...
 pause > nul
 
-"C:\Program Files\PowerShell\7\pwsh.exe" -NoExit -Command "codex --model deepseek-v4-pro"
+pwsh -NoExit -Command "codex --model deepseek-v4-pro"
+
+
