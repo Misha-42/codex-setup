@@ -1,1 +1,6 @@
-CreateObject("WScript.Shell").Run "wt -w 0 nt -d ""C:\Users\user"" --title ""Claude - Kimi K2 Thinking"" ""C:\Program Files\PowerShell\7\pwsh.exe"" -NoExit -Command ""claude --model kimi-k2-thinking""", 0, False
+Set sh = CreateObject("WScript.Shell")
+home = sh.ExpandEnvironmentStrings("%USERPROFILE%")
+pwsh = home & "\AppData\Local\Microsoft\PowerShell\7\pwsh.exe"
+If Not CreateObject("Scripting.FileSystemObject").FileExists(pwsh) Then pwsh = "C:\Program Files\PowerShell\7\pwsh.exe"
+cmd = "wt -w 0 nt -d """ & home & """ --title ""Claude - Kimi K2 Thinking"" """ & pwsh & """ -NoExit -Command ""claude --model kimi-k2-thinking"""
+sh.Run cmd, 0, False

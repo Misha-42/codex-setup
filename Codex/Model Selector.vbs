@@ -1,2 +1,5 @@
-Set objShell = CreateObject("WScript.Shell")
-objShell.Run "pwsh.exe -ExecutionPolicy Bypass -File ""C:\Users\user\model-selector.ps1 -Interactive""", 1, False
+Set sh = CreateObject("WScript.Shell")
+home = sh.ExpandEnvironmentStrings("%USERPROFILE%")
+pwsh = home & "\AppData\Local\Microsoft\PowerShell\7\pwsh.exe"
+If Not CreateObject("Scripting.FileSystemObject").FileExists(pwsh) Then pwsh = "C:\Program Files\PowerShell\7\pwsh.exe"
+sh.Run """" & pwsh & """ -ExecutionPolicy Bypass -File """ & home & "\model-selector.ps1 -Interactive""", 1, False

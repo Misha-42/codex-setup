@@ -1,1 +1,6 @@
-CreateObject("WScript.Shell").Run "wt -w 0 nt -d ""C:\Users\user"" --title ""Codex - Qwen 3.8 27B"" ""C:\Program Files\PowerShell\7\pwsh.exe"" -NoExit -Command ""codex --model qwen3.8-27b""", 0, False
+Set sh = CreateObject("WScript.Shell")
+home = sh.ExpandEnvironmentStrings("%USERPROFILE%")
+pwsh = home & "\AppData\Local\Microsoft\PowerShell\7\pwsh.exe"
+If Not CreateObject("Scripting.FileSystemObject").FileExists(pwsh) Then pwsh = "C:\Program Files\PowerShell\7\pwsh.exe"
+cmd = "wt -w 0 nt -d """ & home & """ --title ""Codex - Qwen 3.8 27B"" """ & pwsh & """ -NoExit -Command ""codex --model qwen3.8-27b"""
+sh.Run cmd, 0, False
