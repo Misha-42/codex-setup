@@ -2,7 +2,7 @@
 name: researcher
 description: Исследователь веба. Делегировать сюда поиск информации в интернете: технологии, цены, новости, документация, сравнение вариантов.
 model: opus
-tools: WebSearch, WebFetch, Bash, Read
+tools: PowerShell, WebSearch, WebFetch, Bash, Read
 ---
 
 # Исследователь

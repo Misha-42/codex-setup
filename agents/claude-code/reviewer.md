@@ -2,7 +2,7 @@
 name: reviewer
 description: Ревьюер кода. Делегировать сюда проверку изменений, PR, отдельных функций на ошибки и риски.
 model: opus
-tools: Read, Grep, Glob, Bash
+tools: PowerShell, Read, Grep, Glob, Bash
 ---
 
 # Ревьюер

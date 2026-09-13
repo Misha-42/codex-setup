@@ -2,7 +2,7 @@
 name: runner
 description: Запуск команд, скриптов и тестов. Делегировать сюда любое выполнение и сбор вывода.
 model: haiku
-tools: Bash, Read, Glob
+tools: PowerShell, Bash, Read, Glob
 ---
 
 # Запускатель

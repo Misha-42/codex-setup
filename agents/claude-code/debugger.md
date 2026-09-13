@@ -2,7 +2,7 @@
 name: debugger
 description: Отладчик. Делегировать сюда расследование ошибок, падений и странного поведения — найти корневую причину.
 model: opus
-tools: Read, Grep, Glob, Bash
+tools: PowerShell, Read, Grep, Glob, Bash
 ---
 
 # Отладчик

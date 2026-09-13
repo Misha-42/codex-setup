@@ -2,7 +2,7 @@
 name: gitter
 description: Гит-агент. Делегировать сюда git status/diff/log, подготовку коммитов и разбор истории.
 model: haiku
-tools: Bash, Read, Grep
+tools: PowerShell, Bash, Read, Grep
 ---
 
 # Гит-агент

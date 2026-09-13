@@ -2,7 +2,7 @@
 name: sysadmin
 description: Системный администратор Windows. Делегировать сюда проверки системы: процессы, службы, окружение, диски, пути, PATH.
 model: haiku
-tools: Bash, Read, Glob
+tools: PowerShell, Bash, Read, Glob
 ---
 
 # Сисадмин
