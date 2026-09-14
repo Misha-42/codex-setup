@@ -29,6 +29,31 @@ if (!KEY) {
   process.exit(1);
 }
 
+// Стабильный sid уровня процесса — фолбэк, если в запросе нет маркеров диалога.
+// ВАЖНО: нельзя генерировать новый sid на каждый запрос — бэкенд OpenCode Go
+// использует x-opencode-session для маршрутизации на один и тот же узел,
+// и случайный sid = каждый запрос «новая сессия» = prompt-кэш никогда не попадает.
+const PROCESS_SID = crypto.randomUUID();
+
+// Достаём стабильный идентификатор диалога из тела запроса Claude Code:
+// metadata.user_id — JSON-строка вида {"device_id":...,"session_id":"<uuid>"}.
+function extractSid(bodyBuf, headerSid) {
+  if (headerSid) return String(headerSid);
+  try {
+    const j = JSON.parse(bodyBuf.toString('utf8'));
+    const uid = j && j.metadata && j.metadata.user_id;
+    if (typeof uid === 'string' && uid) {
+      const m = uid.match(/"session_id"\s*:\s*"([0-9a-fA-F-]{8,})"/);
+      if (m) return m[1];
+      if (/^[0-9a-fA-F-]{8,}$/.test(uid)) return uid;
+      // произвольная строка — стабилизируем хэшем в формат UUID
+      const h = crypto.createHash('sha256').update(uid).digest('hex');
+      return `${h.slice(0, 8)}-${h.slice(8, 12)}-${h.slice(12, 16)}-${h.slice(16, 20)}-${h.slice(20, 32)}`;
+    }
+  } catch (e) {}
+  return PROCESS_SID;
+}
+
 function log(line) {
   try { fs.appendFileSync(LOG, line + '\n'); } catch (e) {}
 }
@@ -48,7 +73,7 @@ const server = http.createServer((req, res) => {
   req.on('data', (c) => chunks.push(c));
   req.on('end', () => {
     const body = Buffer.concat(chunks);
-    const sid = req.headers['x-opencode-session'] || crypto.randomUUID();
+    const sid = extractSid(body, req.headers['x-opencode-session']);
     const headers = { ...req.headers };
     delete headers['host'];
     delete headers['content-length'];
