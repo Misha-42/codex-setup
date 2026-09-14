@@ -94,18 +94,59 @@ const server = http.createServer((req, res) => {
       method: req.method,
       headers,
     };
-    const proxied = https.request(opts, (pres) => {
-      log(`RESP ${req.url} -> ${pres.statusCode}`);
-      res.writeHead(pres.statusCode, pres.headers);
-      pres.pipe(res);
+    // Retry при обрывах/транзиентных ошибках: сеть + 5xx. 429 НЕ ретраим —
+    // у Go это квота (сброс раз в ~5ч), бесполезно. Задержки 0,2,4,...,256с
+    // (~8,5 мин суммарно, укладывается в API_TIMEOUT_MS клиента).
+    const DELAYS = [0, 2, 4, 8, 16, 32, 64, 128, 256].map(s => s * 1000);
+    const RETRY_STATUS = new Set([500, 502, 503, 504]);
+    const sleep = (ms) => new Promise(r => setTimeout(r, ms));
+    let clientGone = false;
+    res.on('close', () => { clientGone = true; });
+
+    (async () => {
+      for (let attempt = 0; ; attempt++) {
+        if (clientGone) return;
+        const result = await new Promise((resolve) => {
+          const proxied = https.request(opts, (pres) => resolve({ type: 'response', pres }));
+          proxied.setTimeout(120000, () => proxied.destroy(Object.assign(new Error('connect timeout'), { code: 'ETIMEDOUT' })));
+          proxied.on('error', (e) => resolve({ type: 'error', err: e }));
+          proxied.end(body);
+        });
+
+        if (result.type === 'error') {
+          log(`ERR ${req.url} sid=${sid} attempt=${attempt + 1} ${result.err.code || result.err.message}`);
+          if (attempt < DELAYS.length && !clientGone) { await sleep(DELAYS[attempt]); continue; }
+          if (!clientGone && !res.headersSent) {
+            res.writeHead(502, { 'content-type': 'application/json' });
+            res.end(JSON.stringify({ type: 'error', error: { type: 'proxy_error', message: String(result.err.message || result.err.code) } }));
+          }
+          return;
+        }
+
+        const pres = result.pres;
+        if (RETRY_STATUS.has(pres.statusCode) && attempt < DELAYS.length && !clientGone) {
+          log(`RETRY ${req.url} sid=${sid} attempt=${attempt + 1} status=${pres.statusCode} delay=${DELAYS[attempt] / 1000}s`);
+          pres.resume();
+          await sleep(DELAYS[attempt]);
+          continue;
+        }
+
+        log(`RESP ${req.url} -> ${pres.statusCode} (attempts=${attempt + 1})`);
+        res.writeHead(pres.statusCode, pres.headers);
+        pres.on('error', () => { try { res.destroy(); } catch (e) {} });
+        res.on('error', () => { try { pres.destroy(); } catch (e) {} });
+        pres.pipe(res);
+        return;
+      }
+    })().catch((e) => {
+      log(`FATAL-HANDLED ${e && e.message}`);
+      try { if (!res.headersSent) res.writeHead(502); res.end(); } catch (e2) {}
     });
-    proxied.on('error', (e) => {
-      log('PROXY-ERR ' + e.message);
-      if (!res.headersSent) res.writeHead(502);
-      res.end('proxy error: ' + e.message);
-    });
-    proxied.write(body);
-    proxied.end();
   });
 });
+// Прокси не должен падать ни при каких обстоятельствах.
+process.on('uncaughtException', (e) => log(`UNCAUGHT ${e && e.stack || e}`));
+process.on('unhandledRejection', (e) => log(`UNHANDLED-REJECT ${e && e.message || e}`));
+server.on('clientError', (err, socket) => { try { socket.destroy(); } catch (e) {} });
+
 server.listen(PORT, '127.0.0.1', () => log(`LISTEN 127.0.0.1:${PORT}`));
